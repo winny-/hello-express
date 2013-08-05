@@ -8,6 +8,7 @@ function handleError(err){
   if (err) console.error(err);
 }
 
+console.log('Connecting to: '+process.env.DATABASE_URL);
 pg.connect(process.env.DATABASE_URL, function(err, client, done){
   handleError(err);
 
