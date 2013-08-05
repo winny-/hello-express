@@ -3,10 +3,9 @@ var mu = require('mu2');
 var pg = require('pg');
 
 var app = express();
-var client = new pg.Client({database: process.env.DATABASE_URL});
 
 function handleError(err){
-  if (err) console.log(err);
+  if (err) console.error(err);
 }
 
 pg.connect(process.env.DATABASE_URL, function(err, client, done){
