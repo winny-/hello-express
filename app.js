@@ -17,7 +17,9 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done){
 
     app.get('/', function(req, res){
       client.query('INSERT INTO counter (address) VALUES ($1)', req.ip, function(err, result){
+        handleError(err);
         client.query('SELECT COUNT(*) AS c FROM counter', null, function (err, result){
+          handleError(err);
           visits = result.rows[0].c;
           var body = '';
 
