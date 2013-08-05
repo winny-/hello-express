@@ -10,6 +10,7 @@ function handleError(err){
 }
 
 pg.connect(process.env.DATABASE_URL, function(err, client, done){
+  handleError(err);
 
   client.query('CREATE TABLE IF NOT EXISTS counter (address TEXT)', function(err, result){
     handleError(err);
