@@ -18,7 +18,7 @@ pg.connect(process.env.DATABASE_URL, function(err, client, done){
     handleError(err);
 
     app.get('/', function(req, res){
-      client.query({text: 'INSERT INTO counter (address) VALUES ($1)', values: [req]}, function(err, result){
+      client.query({text: 'INSERT INTO counter (address) VALUES ($1)', values: [req.ip]}, function(err, result){
         handleError(err);
         client.query('SELECT COUNT(*) AS c FROM counter', null, function (err, result){
           handleError(err);
